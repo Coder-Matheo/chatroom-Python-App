@@ -1,0 +1,165 @@
+<MainMenu>:
+    User_intro_Info:
+        GridLayout:
+            ## background Image
+            canvas.before:
+                Color:
+                    rgba:rgba('#0d1328')
+                Rectangle:
+                    ##source:"img/back_test2.png"
+                    size:root.width,root.height
+
+            ## Menubar in Register site
+            ActionBar:
+                width:root.width
+                pos:0,root.height-50
+                ActionView:
+                    ActionPrevious:
+                        title:'Register'
+                        with_previous:False
+                        on_press: root.manager.current = 'infoGraphi'
+                    ActionButton:
+                        id:chatButton
+                        text:'chat'
+                        icon:'img/chat_logo.png'
+                        disabled : True
+                        opacity : 0
+                        on_press: root.manager.current = 'chatting'
+                    ActionButton:
+                        text:'ein'
+                        icon:'img/read_msg_icon.png'
+                        on_press: root.manager.current = 'view_chat'
+
+            #Title App
+            Label:
+                text:"[b][color=2ff]Whatschat[/color][/b]"
+                pos:root.width/2-20,root.height/1.3
+                haling:"center"
+                markup:True
+                font_size:32
+                size:40,100
+
+            Label:
+                Image:
+                    source:'img/entInfo_bild.png'
+                    pos:root.width/2-65,root.height/1.7
+                    size:150,150
+
+            #Input field
+            Label:
+                canvas:
+                    Color:
+                        rgb: 1,1,1
+                    RoundedRectangle:
+                        pos:80,root.height/2.2
+                        radius: [20, 20, 20, 20]
+                        size:root.width-160,40
+                TextInput:
+                    id:nameId
+                    hint_text: 'User name'
+                    markup:True
+                    multiline: False
+                    background_color: [1, 1, 1, 0]
+                    pos:root.width/2-120,root.height/2.2
+                    size:240,40
+                    foreground_color: (0, 0, 1, 1)
+                    halign:'center'
+            Label:
+                canvas:
+                    Color:
+                        rgb: 1,1,1
+                    RoundedRectangle:
+                        pos:80,root.height/2.6
+                        radius: [20, 20, 20, 20]
+                        size:root.width-160,40
+                TextInput:
+                    id:countryId
+                    hint_text: 'Country'
+                    multiline: False
+                    background_color: [1, 1, 1, 0]
+                    pos:root.width/2-120,root.height/2.6
+                    size:240,40
+                    foreground_color: (0, 0, 1, 1)
+                    halign:'center'
+            Label:
+                canvas:
+                    Color:
+                        rgb: 1,1,1
+                    RoundedRectangle:
+                        pos:80,root.height/3.2
+                        radius: [20, 20, 20, 20]
+                        size:root.width-160,40
+
+                TextInput:
+                    id:emailId
+                    hint_text: 'E-mail'
+                    multiline: False
+                    background_color: [1, 1, 1, 0]
+                    pos:root.width/2-120,root.height/3.2
+                    size:240,40
+                    foreground_color: (0, 0, 1, 1)
+                    halign:'center'
+
+            Label:
+                canvas:
+                    Color:
+                        rgb: 1,1,1
+                    RoundedRectangle:
+                        pos:80,root.height/4.2
+                        radius: [20, 20, 20, 20]
+                        size:root.width-160,40
+                TextInput:
+                    id:passId
+                    hint_text: 'Passwort'
+                    multiline: False
+                    background_color: [1, 1, 1, 0]
+                    pos:root.width/2-120,root.height/4.2
+                    size:240,40
+                    foreground_color: (0, 0, 1, 1)
+                    halign:'center'
+                    password:True
+
+            Label:
+                canvas:
+                    Color:
+                        rgba:0,0,1,0.8
+                    RoundedRectangle:
+                        pos:80,root.height/6
+                        radius: [20, 20, 20, 20]
+                        size:root.width-160,40
+                Button:
+                    text:"[b]Login[/b]"
+                    markup:True
+                    background_color: [0, 0, 1, 0]
+                    pos:root.width/2-120,root.height/6
+                    size:240,40
+                    on_press:
+                        root.entryInfo(nameId.text,emailId.text,passId.text,countryId.text)
+                        nameId.text : ""
+                        emailId.text : ""
+                        passId.text: ""
+                        countryId.text : ""
+
+
+            Label:
+                id:failedMsg
+                pos:root.width/2-20,root.height/14
+                haling:"center"
+                markup:True
+                font_size:14
+                size:40,100
+                disabled:False
+
+
+
+            Image:
+                source:'img/apple_logo.png'
+                pos:root.width/2-20,30
+                size:50,50
+                Button:
+                    pos:root.width/2-20,20
+                    size:50,50
+                    font_size:18
+                    color:rgba('#ffffff')
+                    background_color:[0,0,0,0]
+                    on_press: root.manager.current = 'infoGraphi'

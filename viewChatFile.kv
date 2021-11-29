@@ -1,0 +1,139 @@
+<View_site>:
+
+
+    BoxLayout:
+        #backgroung color through Canvas
+        BoxLayout:
+            id:canColor
+            my_color: (1, 1, 1)
+            canvas:
+                Color:
+                    rgb:self.my_color
+                Rectangle:
+                    ##source:"img/back_5.png"
+                    size:root.width,root.height
+
+        BoxLayout:
+            #profile image and night-day Button
+            Label:
+                Image:
+                    source:'img/profil_msg.png'
+                    pos:root.width-60,root.height-60
+                    size:40,40
+            Label:
+                Image:
+                    source:'img/nightmode_icon.png'
+                    pos:20,root.height-60
+                    size:40,40
+                    Button:
+                        background_color:[0,0,0,0]
+                        pos:20,root.height-60
+                        size:40,40
+                        on_press:
+                            root.night_day_mood()
+
+            Label:
+                canvas:
+                    Color:
+                        rgba:rgba('#fd8300')
+                    RoundedRectangle:
+                        pos:20,root.height/2+60
+                        radius: [20, 20, 20, 20]
+                        size:root.width-40,140
+
+            #Title the Window
+            Label:
+                Label:
+                    text:'[b][color=00a1e4]Your Message[/color]'
+                    markup:True
+                    pos:60,root.height-160
+                    font_size:'24sp'
+            Label:
+                id:msgBoxId
+                pos:20,160
+            Label:
+                id:msgTimeId
+                pos:220,160
+
+            Label:
+                canvas:
+                    Color:
+                        rgba:rgba('#fd8300')
+                    RoundedRectangle:
+                        pos:20,root.height/2-160
+                        radius: [20, 20, 20, 20]
+                        size:160,root.height/2-140
+            Label:
+                id:boxColor_id
+                mybox_color:(0,0,0)
+                canvas:
+                    Color:
+                        rgb:self.mybox_color
+                    RoundedRectangle:
+                        pos:root.width/2+20,root.height/2-160
+                        radius: [20, 20, 20, 20]
+                        size:160,root.height/2-140
+
+
+            Label:
+                id:footboxColor
+                myfootColor:(0,0,0)
+                canvas:
+                    Color:
+                        rgb:self.myfootColor
+                    RoundedRectangle:
+                        pos:0,0
+                        radius: [10, 10, 0, 0]
+                        size:root.width,40
+
+            #down menubar
+            Label:
+                Image:
+                    source:'img/home_icon.png'
+                    size:40,40
+                    pos:root.width/2-20,5
+                Button:
+                    size:40,40
+                    pos:root.width/2-20,5
+                    background_color:[0,0,0,0]
+                    on_press: root.manager.current = 'display_view'
+
+            Label:
+                canvas:
+                    Color:
+                        rgba:0,0,1,1
+                    RoundedRectangle:
+                        pos:20,100
+                        radius: [10, 10, 10, 10]
+                        size:root.width-100,50
+                TextInput:
+                    id:datumId
+                    hint_text: 'year/month/day'
+                    background_color: [1, 1, 1, 0]
+                    pos:20,100
+                    size:root.width-100,50
+                    foreground_color: (0, 0, 1, 1)
+                    halign:'center'
+                    color: 1, 1, 1
+
+
+            Label:
+                id:btnboxColor
+                myfootbtnColor:(0,0,1)
+
+                canvas:
+                    Color:
+                        rgb:self.myfootbtnColor
+                    RoundedRectangle:
+                        pos:root.width-70, 100
+                        radius: [10, 10, 10, 10]
+                        size:60,50
+
+                Button:
+                    size:60,40
+                    pos:root.width-60, 100
+                    background_color:[0,0,0,0]
+                    text:'send'
+                    font_size:'18sp'
+                    color: 1, 1, 1
+                    on_press: root.view_msg_csv(datumId.text)

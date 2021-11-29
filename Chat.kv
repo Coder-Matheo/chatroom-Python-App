@@ -1,0 +1,130 @@
+#Implement the GUI Code for Chat Window
+<Chat>:
+    GridLayout:
+        #Background Window through Canvas and Image
+        canvas:
+            Color:
+                rgba:rgba('#0d1328')
+            Rectangle:
+                ##source:"img/back_7.jpg"
+                size:root.width,root.height
+
+        BoxLayout:
+            #Implement overhead (Username, Battery, City-Location)
+            Label:
+                canvas:
+                    Color:
+                        rgba:rgba('#003366')
+                    RoundedRectangle:
+                        pos:10,root.height-80
+                        size:root.width-20,60
+                        radius:[15,15,0,0]
+                text:'12:00PM'
+                id:clock
+
+                pos:root.width/2-20,root.height-60
+                Label:
+                    id:loc
+                    text:'Telekom'
+                    pos:0,root.height-60
+                Image:
+                    source:'img/batterie_logo.png'
+                    pos:root.width-55,root.height-35
+                    size:50,50
+
+            Label:
+                id:usernameChat
+                text:'[b]Matheo[/b]'
+                markup:True
+                font_size:24
+                pos:root.width/2-20,root.height-100
+
+                Image:
+                    source:'img/profil_msg.png'
+                    pos:root.width-70,root.height-75
+                    size:50,50
+                Image:
+                    source:'img/pfile_back_logo.png'
+                    pos:20,root.height-70
+                    size:40,40
+                    Button:
+                        pos:20,root.height-70
+                        size:40,40
+                        font_size:18
+                        color:rgba('#ffffff')
+                        background_color:[0,0,0,0]
+                        on_press: root.manager.current = 'mainmenu'
+
+        #Usermassege's show of display
+        Label:
+            canvas:
+                Color:
+                    rgba:1,1,1,0.22
+                Rectangle:
+                    pos:10, 90
+                    size:root.width-20,root.height-180
+
+
+        #user message show to yourself of display
+        Label:
+            id:msgChat
+            pos:0, root.height/3.4
+            font_size: '20sp'
+            foreground_color: (22, 0, 1, 1)
+
+            size:root.width-20, 420
+
+
+
+        ##menubar Chat screen
+        Label:
+            canvas.before:
+                Color:
+                    rgb: rgba("#000034")
+                RoundedRectangle:
+                    pos:10, 10
+                    size:root.width-20,70
+                    radius:[0,0,15,15]
+
+
+        ##foot place for send message
+        Label:
+            canvas:
+                Color:
+                    rgba:1,1,1,1
+                RoundedRectangle:
+                    pos:20,20
+                    radius: [25, 25, 25, 25]
+                    size:root.width-120,50
+            TextInput:
+                id:chatInId
+                hint_text: 'Say Something...'
+                multiline:False
+                font_size: '18sp'
+                background_color: [1, 1, 1, 0]
+                pos:30,20
+                size:root.width-100,50
+                halign:'left'
+                valign:'center'
+
+        #Button for sending Message
+        Label:
+            canvas:
+                Color:
+                    rgba:0,0,1,1
+                RoundedRectangle:
+                    pos:root.width-90,20
+                    radius: [25, 25, 25, 25]
+                    size:70,50
+            Button:
+                background_color: [0, 0, 1, 0]
+                text:"[b]Send"
+                markup:True
+                size:40,40
+                pos:root.width-90,20
+                height:50
+                width:70
+                on_press:
+
+                    root.message_recv(chatInId.text)
+                    chatInId.text = ""

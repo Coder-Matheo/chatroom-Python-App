@@ -1,0 +1,69 @@
+<Display_start_entrace>:
+    Display_view_layout:
+        GridLayout:
+            canvas:
+                Color:
+                    rgb:rgba("#0d1328")
+                Rectangle:
+                    ##source:"img/back_5.png"
+                    size:root.width,root.height
+
+            Label:
+                canvas:
+                    Color:
+                        rgba:rgba('#fd8300')
+                    Rectangle:
+                        pos:root.width-100,root.height-root.height/2.5
+                        size:10,root.height/2-50
+                text:'12'
+                font_size:62
+                pos:20,root.height-100
+                color: rgba("#fd8300")
+                bold:False
+                id:clockHour
+
+            Label:
+                text:'00PM'
+                pos:20,root.height-180
+                font_size:62
+                id:clockMinute
+
+            Label:
+                canvas:
+                    Color:
+                        rgba:rgba("#fd8300")
+                    RoundedRectangle:
+                        pos: 20,200
+                        size:60,60
+                        radius:[10,10,10,10]
+
+                Image:
+                    id:picWeather
+                    size:80,80
+                    pos: 10,190
+            Label:
+                id:Temp_id
+                font_size:20
+                pos:0,130
+            Label:
+                id:dayName_view
+                pos:0,90
+                font_size:14
+            Label:
+                id:monthDayNumber
+                pos:0,70
+                font_size:14
+
+
+            Label:
+                canvas:
+
+                    Rectangle:
+                        source:"img/enter_display.png"
+                        size:40,40
+                        pos:root.width/2-20,20
+                Button:
+                    on_press: root.manager.current = 'mainmenu'
+                    background_color:[0,0,0,0]
+                    size:40,40
+                    pos:root.width/2-20,20

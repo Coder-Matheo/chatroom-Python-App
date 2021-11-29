@@ -1,0 +1,41 @@
+<InfoGraphi>:
+    GridLayout:
+        canvas:
+            Color:
+                rgba:rgba('#0d1328')
+            Rectangle:
+                ##source:"img/back_img4.jpg"
+                size:root.width,root.height
+        Label:
+            id:txtkonto
+            canvas.before:
+                Color:
+                    rgba:1,1,1,1
+                RoundedRectangle:
+
+                    pos:10, 30
+                    size:380,640
+
+            width:350
+            font_size:16
+            color: rgba("#0a0a0a")
+            pos:20, 320
+            text_size:self.width, None
+            markup: True
+            text:"[b]Diese Anwendung ist eine Kommunikations-App, mit der man mit mehreren Personen gleichzeitig kommunizieren und schreiben kann.\n \nDiese App stammt von einem zentralen Socket, der über die IP-Adresse des Socket eine Verbindung herstellt. Nach der Verbindungsherstellung können Sie mit dem Schreiben beginnen und alle Benutzer sehen alle Textnachrichten.\n\nWenn sich der Benutzer zum ersten Mal anmelden möchte, muss er der App alle erforderlichen Informationen gegeben haben. Anschließend werden Sie automatisch zur Chatseite weitergeleitet. Alle Informationen werden automatisch in der Datenbank gespeichert. Wenn sich der Benutzer bereits registriert hat, gibt er die vorherigen Informationen an die App weiter und ruft die Chatseite auf.\n\nDiese App speichert alle Nachrichten in einer CSV-Datei. In dieser App können Sie die Nachrichten des gewünschten Tages wiedersehen.\n\nDarüber hinaus können Sie Ihre Arbeitszeit in Form eines Diagramms anzeigen lassen."
+
+        #Accept Button below window
+        Label:
+            canvas.before:
+                Color:
+                    rgb: rgba("#2897ff")
+                RoundedRectangle:
+                    radius: [20, 20, 20, 20]
+                    pos:250, 40
+                    size:120,40
+            Button:
+                text:'accept'
+                pos:250, 40
+                size:120,40
+                background_color:[0,0,0,0]
+                on_press: root.manager.current = 'mainmenu'
